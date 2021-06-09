@@ -29,15 +29,17 @@
         </div>
         <div class="properties-container">
             <div class="input-container">
-                <div class="input"><input type="text" name="meme-text" id="meme-text" placeholder="Start Typing"
-                        oninput="onSetNewInput(this.value)">
+                <div class="input"><input type="text" name="meme-text" id="meme-text" placeholder="Start Typing">
                 </div>
+                <button onclick="onSetNewInput()" class="btn-add">Insert Text</button>
             </div>
             <div class="text-properties">
                 <button class="btn btn-bigger" onclick="onTextSize(4)">A+</button>
                 <button class="btn btn-smaller" onclick="onTextSize(-4)">A-</button>
                 <button class="btn btn-up" onclick="onTextMove(-10)">A ⬆</button>
                 <button class="btn btn-down" onclick="onTextMove(10)">A ⬇</button>
+                <button class="btn btn-add-line" onclick="onAddNewLine()">+</button>
+                <button class="btn btn-switch" onclick="onSwitchLine()">Switch Line</button>
             </div>
 
         </div>

@@ -26,21 +26,35 @@ var gImgs = [
 
 var gMeme = {
   selectedImgId: 0,
-  selectedLineIdx: 0,
+  selectedLineIdx: gSelectedLine,
   lines: [
     {
-      txt: ['I never eat Falafel'],
+      txt: [],
       size: 40,
-      align: 'left',
-      color: 'red',
+      align: 'center',
+      color: 'white',
     },
   ],
 };
 
 function setInput(txt) {
-  gMeme.lines[gSelectedLine].txt = txt;
+  if (!gMeme.lines[gSelectedLine].txt) {
+    gMeme.lines[gSelectedLine].txt = txt;
+  } else {
+    gMeme.lines[gSelectedLine].txt.push(txt);
+  }
 }
 
 function setTextSize(diff) {
-  gMeme.lines[0].size += diff;
+  gMeme.lines[gSelectedLine].size += diff;
+}
+
+function createNewLine() {
+  var newLine = {
+    txt: [],
+    size: 40,
+    align: 'center',
+    color: 'white',
+  };
+  gMeme.lines.push(newLine);
 }
