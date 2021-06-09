@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Meme Generator</title>
+</head>
+
+<body onload="init()">
+
+    <header class="main-header">
+        <img class="logo" src="img/LOGO/LOGO.png" alt="">
+        <div class="links-container">
+            <a href="#">Gallery</a>
+            <a href="#">About</a>
+        </div>
+    </header>
+
+    <section class="gallery-container">
+
+    </section>
+
+    <main class="main-content">
+        <div class="canvas-container">
+            <canvas class="my-canvas" width="450" height="450"></canvas>
+        </div>
+        <div class="properties-container">
+            <div class="input-container">
+                <div class="input"><input type="text" name="meme-text" id="meme-text" placeholder="Start Typing"
+                        oninput="onSetNewInput(this.value)">
+                </div>
+            </div>
+            <div class="text-properties">
+                <button class="btn btn-bigger" onclick="onTextSize(4)">A+</button>
+                <button class="btn btn-smaller" onclick="onTextSize(-4)">A-</button>
+                <button class="btn btn-up" onclick="onTextMove(-10)">A ⬆</button>
+                <button class="btn btn-down" onclick="onTextMove(10)">A ⬇</button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <img class="logo" src="img/LOGO/LOGO.png">
+        <p class="copyrights">© All rights reserved 2021</p>
+    </footer>
+
+
+
+
+
+    <script src="js/utils.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+</body>
+
+</html>
