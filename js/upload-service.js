@@ -6,7 +6,7 @@ function uploadImg(elForm, ev) {
   function onSuccess(uploadedImgUrl) {
     uploadedImgUrl = encodeURIComponent(uploadedImgUrl);
     document.querySelector('.share-hidden').innerHTML = `
-      <a  href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
          Share   
       </a>`;
     document.querySelector('.share-hidden').style.visibility = 'visible';

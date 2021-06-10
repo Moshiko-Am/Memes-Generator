@@ -182,3 +182,10 @@ function showMenu() {
   var elNav = document.querySelector('.links-container');
   elNav.classList.toggle('links-container-show');
 }
+
+function onSetLang(lang) {
+  setLang(lang);
+  if (lang === 'he') document.body.classList.add('rtl');
+  else document.body.classList.remove('rtl');
+  doTrans();
+}

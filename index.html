@@ -14,22 +14,28 @@
     <header class="main-header">
         <img class="logo" src="img/LOGO/LOGO.png" alt="">
         <div class="links-container">
-            <a href="#" onclick="showHome()">Gallery</a>
-            <a href="#">About</a>
+            <select class="select-lang" onchange="onSetLang(this.value)">
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+            </select>
+            <a data-trans="gallery" href="#" onclick="showHome()">Gallery</a>
         </div>
         <img class="img btn-menu " src="img/ICONS/menu.png" onclick="showMenu()">
     </header>
 
     <div class="gallery-filter">
-        <input class="gallery-input" type="text" name="gallery-filter" id="gallery-filter" placeholder="Search"
-            oninput="onSetFilter(this.value)">
+        <input data-trans="search" class="gallery-input" type="text" name="gallery-filter" id="gallery-filter"
+            placeholder="Search" oninput="onSetFilter(this.value)">
         <div class="words-container">
-            <div class="word-filter" onclick="onSetFilter('siblings'), biggerSize(this)">siblings</div>
-            <div class="word-filter bigger" onclick="onSetFilter('president'), biggerSize(this)">president</div>
-            <div class="word-filter" onclick="onSetFilter('surprise'), biggerSize(this)">surprise</div>
-            <div class="word-filter" onclick="onSetFilter('funny'), biggerSize(this)">funny</div>
-            <div class="word-filter bigger" onclick="onSetFilter('baby'), biggerSize(this)">baby</div>
-            <div class="word-filter" onclick="onSetFilter('dog'), biggerSize(this)">dog</div>
+            <div data-trans="siblings" class="word-filter" onclick="onSetFilter('siblings'), biggerSize(this)">siblings
+            </div>
+            <div data-trans="president" class="word-filter bigger" onclick="onSetFilter('president'), biggerSize(this)">
+                president</div>
+            <div data-trans="surprise" class="word-filter" onclick="onSetFilter('surprise'), biggerSize(this)">surprise
+            </div>
+            <div data-trans="funny" class="word-filter" onclick="onSetFilter('funny'), biggerSize(this)">funny</div>
+            <div data-trans="baby" class="word-filter bigger" onclick="onSetFilter('baby'), biggerSize(this)">baby</div>
+            <div data-trans="dog" class="word-filter" onclick="onSetFilter('dog'), biggerSize(this)">dog</div>
         </div>
     </div>
     <section class="gallery-container">
@@ -42,14 +48,15 @@
         </div>
         <div class="properties-container">
             <div class="input-container">
-                <div class="input-text"><input type="text" name="meme-text" id="meme-text" placeholder="Your Text Here">
+                <div class="input-text"><input data-trans="meme" type="text" name="meme-text" id="meme-text"
+                        placeholder="Your Text Here">
                 </div>
                 <div class="btns-text-modify">
                     <button class="btn btn-switch" onclick="onSwitchLine()"><img class="img"
-                            src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-                    <button onclick="onSetNewInput()" class="btn btn-add"><img class="img" src="img/ICONS/add.png"
-                            alt=""></button>
-                    <button class="btn btn-remove" onclick="onRemoveTxt()"><img src="img/ICONS/trash.png" alt=""
+                            src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                    <button onclick="onSetNewInput()" class="btn btn-add"><img class="img"
+                            src="img/ICONS/add.png"></button>
+                    <button class="btn btn-remove" onclick="onRemoveTxt()"><img src="img/ICONS/trash.png"
                             class="img"></button>
                 </div>
             </div>
@@ -80,12 +87,13 @@
                 <button class="btn btn-right" onclick="onTextSide(10)">A ➡</button>
             </div>
             <div class="share-container">
-                <form action="" onsubmit="uploadImg(this, event)" class="form-share">
+                <form onsubmit="uploadImg(this, event)" class="form-share">
                     <input name="img" id="imgData" type="hidden" />
-                    <button class="btn btn-share">Share</button>
+                    <button data-trans="share" class="btn btn-share">Share</button>
                     <button class="btn btn-share share-hidden"></button>
                 </form>
-                <a href="#" class="btn btn-download" onclick="downloadImg(this)" download="my-meme.jpg">Download</a>
+                <a href="#" data-trans="download" class="btn btn-download" onclick="downloadImg(this)"
+                    download="my-meme.jpg">Download</a>
             </div>
 
         </div>
@@ -94,7 +102,7 @@
     <footer class="main-footer">
         <div class="footer-content">
             <img class="logo" src="img/LOGO/LOGO.png">
-            <p class="copyrights">© All rights reserved 2021</p>
+            <p data-trans="copyrights" class="copyrights">© All rights reserved 2021</p>
         </div>
     </footer>
 
@@ -102,8 +110,8 @@
 
 
 
-    <script src="js/utils.js"></script>
     <script src="js/meme-service.js"></script>
+    <script src="js/i18n-service.js"></script>
     <script src="js/meme-controller.js"></script>
     <script src="js/upload-service.js"></script>
 </body>

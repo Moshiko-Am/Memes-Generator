@@ -21,6 +21,16 @@ body {
   margin: 0;
 }
 
+body.rtl {
+  direction: rtl;
+}
+
+.select-lang {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 a {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-decoration: none;
@@ -167,7 +177,6 @@ a {
 }
 
 ::placeholder {
-  text-align: left;
   font-size: 1.8rem;
 }
 
