@@ -9,7 +9,11 @@ var gCurrFont = 'Impact';
 function init() {
   gCanvas = document.querySelector('.my-canvas');
   gCtx = gCanvas.getContext('2d');
-  resizeCanvas();
+  addEventListener('resize', () => {
+    resizeCanvas();
+    drawImg(gCurrImgIdx);
+    renderLines();
+  });
   renderGallery(gImgs);
 }
 
@@ -172,4 +176,9 @@ function downloadImg(elLink) {
 
 function showHome() {
   location.reload();
+}
+
+function showMenu() {
+  var elNav = document.querySelector('.links-container');
+  elNav.classList.toggle('links-container-show');
 }
