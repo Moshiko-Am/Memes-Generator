@@ -18,8 +18,8 @@ function init() {
 }
 
 function renderGallery(images) {
-  var strHTMLs = images.map((img, idx) => {
-    return `<img src="${img.url}" data-idx=${idx} style="width: 150px;" onclick="displayImage(${idx})" class="gallery-img"/>`;
+  var strHTMLs = images.map((img) => {
+    return `<img src="${img.url}" style="width: 150px;" onclick="displayImage(${img.id})" class="gallery-img"/>`;
   });
   var elGallery = document.querySelector('.gallery-container');
   elGallery.innerHTML = strHTMLs.join('');
@@ -45,30 +45,22 @@ function drawImg(idx) {
 }
 
 function drawTxt() {
-  var txt = gMeme.lines[gMeme.selectedLineIdx].txt;
+  var currLine = gMeme.lines[gMeme.selectedLineIdx];
+  var txt = currLine.txt;
   gCtx.lineWidth = 2;
   gCtx.strokeStyle = 'black';
-  gCtx.fillStyle = gMeme.lines[gMeme.selectedLineIdx].color;
-  gCtx.font =
-    gMeme.lines[gMeme.selectedLineIdx].size +
-    'px ' +
-    gMeme.lines[gMeme.selectedLineIdx].font;
-  gCtx.textAlign = gMeme.lines[gMeme.selectedLineIdx].align;
-  gCtx.fillText(
-    txt,
-    gMeme.lines[gMeme.selectedLineIdx].lineWidth,
-    gMeme.lines[gMeme.selectedLineIdx].lineHeight
-  );
-  gCtx.strokeText(
-    txt,
-    gMeme.lines[gMeme.selectedLineIdx].lineWidth,
-    gMeme.lines[gMeme.selectedLineIdx].lineHeight
-  );
+  gCtx.fillStyle = currLine.color;
+  gCtx.font = currLine.size + 'px ' + currLine.font;
+  gCtx.textAlign = currLine.align;
+  gCtx.fillText(txt, currLine.lineWidth, currLine.lineHeight);
+  gCtx.strokeText(txt, currLine.lineWidth, currLine.lineHeight);
+  currLine.width = gCtx.measureText(txt).width;
+  currLine.startX = currLine.lineWidth - currLine.width / 2;
+  currLine.startY = currLine.lineHeight - currLine.size;
 }
 
 function onSetNewInput() {
   var elText = document.querySelector('input[name=meme-text]');
-  //   drawImg(gCurrImgIdx);
   setInput(elText.value);
   drawTxt();
   elText.value = '';
@@ -133,12 +125,13 @@ function resizeCanvas() {
 }
 
 function drawRect() {
+  var currLine = gMeme.lines[gSelectedLine];
   gCtx.beginPath();
   gCtx.rect(
     0,
-    gMeme.lines[gSelectedLine].lineHeight - gMeme.lines[gSelectedLine].size,
+    currLine.lineHeight - currLine.size,
     gCanvas.width,
-    gMeme.lines[gSelectedLine].size + 10
+    currLine.size + 10
   );
   gCtx.strokeStyle = 'white';
   gCtx.stroke();
@@ -189,3 +182,16 @@ function onSetLang(lang) {
   else document.body.classList.remove('rtl');
   doTrans();
 }
+
+// function onGetText(ev) {
+//   var x = ev.offsetX;
+//   var y = ev.offsetY;
+//   gSelectedLine = gMeme.lines.findIndex((currLine) => {
+//     return (
+//       x > currLine.startX &&
+//       x < currLine.startX + currLine.width &&
+//       y > currLine.startY &&
+//       y < currLine.startY + currLine.size
+//     );
+//   });
+// }
