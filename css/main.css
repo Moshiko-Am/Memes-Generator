@@ -201,9 +201,28 @@ a {
   width: 20px;
 }
 
-.text-properties,
+.text-properties {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 2rem;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.btns-text-align {
+  display: block;
+  width: 100%;
+}
+
+.btns-text-color {
+  display: flex;
+  justify-content: space-around;
+  margin-block: 1rem;
+}
+
 .text-move {
   display: flex;
+  align-items: center;
   margin: 0 auto 2rem;
   width: 80%;
   justify-content: space-around;
@@ -301,6 +320,23 @@ select[name='txt-font'] {
   .main-content {
     max-width: 1000px;
   }
+
+  .text-properties {
+    display: block;
+    width: 100%;
+  }
+
+  .btns-text-color {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem;
+  }
+
+  select[name='txt-font'],
+  .btn-color {
+    margin: 1rem;
+    padding: 1rem;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -311,6 +347,29 @@ select[name='txt-font'] {
   .canvas-container {
     width: 400px;
     height: 400px;
+  }
+
+  .btns-text-modify {
+    margin: 1rem;
+  }
+
+  .btns-text-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline-start: 3rem;
+  }
+
+  .btns-text-color {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  select[name='txt-font'],
+  .btn-color {
+    margin: 1rem;
+    padding: 1rem;
   }
 }
 
@@ -354,6 +413,36 @@ select[name='txt-font'] {
     height: 300px;
   }
 
+  .properties-container {
+    margin-inline-start: 2rem;
+  }
+
+  .btns-text-modify {
+    margin: 1rem;
+  }
+
+  .btns-text-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btns-text-color {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  select[name='txt-font'],
+  .btn-color {
+    margin: 0;
+    padding: 1rem;
+  }
+
+  .btn {
+    margin: 0.5rem;
+  }
+
   .main-content {
     align-items: center;
   }
@@ -377,8 +466,29 @@ select[name='txt-font'] {
   }
 
   .text-properties {
-    width: 200px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
+
+  .btns-text-align {
+    display: flex;
+    align-items: center;
+    margin-block: 1rem;
+  }
+
+  .btns-text-color {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .btn {
+    margin: 1rem;
+  }
+
   .canvas-container {
     max-width: 300px;
     max-height: 300px;
@@ -441,7 +551,7 @@ select[name='txt-font'] {
 
   .btn-menu {
     display: block;
-    margin-right: 1rem;
+    margin-inline: 1rem;
     pointer-events: all;
   }
 

@@ -13,7 +13,7 @@
 
     <div class="main-wrapper">
         <header class="main-header">
-            <img class="logo" src="img/LOGO/LOGO.png" alt="">
+            <img class="logo" src="img/LOGO/LOGO.png">
             <div class="links-container">
                 <select class="select-lang" onchange="onSetLang(this.value)">
                     <option value="en">English</option>
@@ -21,7 +21,7 @@
                 </select>
                 <a data-trans="gallery" href="#" onclick="showHome()">Gallery</a>
             </div>
-            <img class="img btn-menu " src="img/ICONS/menu.png" onclick="showMenu()">
+            <img class="img btn-menu" src="img/ICONS/menu.png" onclick="showMenu()">
         </header>
         <div class="gallery-filter">
             <input data-trans="search" class="gallery-input" type="text" name="gallery-filter" id="gallery-filter"
@@ -50,8 +50,9 @@
             </div>
             <div class="properties-container">
                 <div class="input-container">
-                    <div class="input-text"><input class="txt-input" data-trans="meme" type="text" name="meme-text"
-                            id="meme-text" placeholder="Your Text Here">
+                    <div class="input-text">
+                        <input class="txt-input" data-trans="meme" type="text" name="meme-text" id="meme-text"
+                            placeholder="Your Text Here">
                     </div>
                     <div class="btns-text-modify">
                         <button class="btn btn-switch" onclick="onSwitchLine()"><img class="img"
@@ -63,21 +64,28 @@
                     </div>
                 </div>
                 <div class="text-properties">
-                    <select name="txt-font" onchange="onFontChange(this.value)">Impact
-                        <option class="font-patrick" value="Impact" style="font-family: Impact">Impact</option>
-                        <option class="font-patrick" value="Patrick" style="font-family: Patrick;">Patrick</option>
-                        <option class="font-stint" value="Stint" style="font-family: Stint;">Stint</option>
-                    </select>
-                    <button class="btn btn-bigger" onclick="onTextSize(4)"><img class="img img-decrease"
-                            src="img/ICONS/increase font - icon.png" alt=""></button>
-                    <button class="btn btn-smaller" onclick="onTextSize(-4)"><img class="img"
-                            src="img/ICONS/decrease font - icon.png" alt=""></button>
-                    <button class="btn btn-align-left" onclick="onTextAlign('right')"><img class="img"
-                            src="img/ICONS/align-to-left.png" alt=""></button>
-                    <button class="btn btn-align-center" onclick="onTextAlign('center')"><img class="img"
-                            src="img/ICONS/center-text-alignment.png" alt=""></button>
-                    <button class="btn btn-align-right" onclick="onTextAlign('left')"><img class="img"
-                            src="img/ICONS/align-to-right.png" alt=""></button>
+                    <div class="btns-text-align">
+                        <button class="btn btn-bigger" onclick="onTextSize(4)"><img class="img img-decrease"
+                                src="img/ICONS/increase font - icon.png"></button>
+                        <button class="btn btn-smaller" onclick="onTextSize(-4)"><img class="img"
+                                src="img/ICONS/decrease font - icon.png"></button>
+                        <button class="btn btn-align-left" onclick="onTextAlign('right')"><img class="img"
+                                src="img/ICONS/align-to-left.png"></button>
+                        <button class="btn btn-align-center" onclick="onTextAlign('center')"><img class="img"
+                                src="img/ICONS/center-text-alignment.png"></button>
+                        <button class="btn btn-align-right" onclick="onTextAlign('left')"><img class="img"
+                                src="img/ICONS/align-to-right.png"></button>
+                    </div>
+                    <div class="btns-text-color">
+                        <button class="btn btn-color" onclick="onTextColor()">
+                            <img src="img/ICONS/paint-board-and-brush.png" class="img">
+                        </button>
+                        <select name="txt-font" onchange="onFontChange(this.value)">Impact
+                            <option class="font-impact" value="Impact" style="font-family: Impact">Impact</option>
+                            <option class="font-patrick" value="Patrick" style="font-family: Patrick;">Patrick</option>
+                            <option class="font-stint" value="Stint" style="font-family: Stint;">Stint</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="text-move">
                     <button class="btn btn-up" onclick="onTextMove(-10)">A ⬆</button>
