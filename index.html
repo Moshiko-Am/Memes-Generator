@@ -77,8 +77,9 @@
                                 src="img/ICONS/align-to-right.png"></button>
                     </div>
                     <div class="btns-text-color">
-                        <button class="btn btn-color" onclick="onTextColor()">
+                        <button class="btn btn-color">
                             <img src="img/ICONS/paint-board-and-brush.png" class="img">
+                            <input type="color" class="color-input" oninput="onSetColor(this.value)">
                         </button>
                         <select name="txt-font" onchange="onFontChange(this.value)">Impact
                             <option class="font-impact" value="Impact" style="font-family: Impact">Impact</option>

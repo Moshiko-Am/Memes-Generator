@@ -108,3 +108,7 @@ function getImagesForDisplay() {
   });
   return images;
 }
+
+function setColor(val) {
+  gMeme.lines[gSelectedLine].color = val;
+}

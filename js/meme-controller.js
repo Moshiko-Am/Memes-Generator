@@ -183,15 +183,8 @@ function onSetLang(lang) {
   doTrans();
 }
 
-// function onGetText(ev) {
-//   var x = ev.offsetX;
-//   var y = ev.offsetY;
-//   gSelectedLine = gMeme.lines.findIndex((currLine) => {
-//     return (
-//       x > currLine.startX &&
-//       x < currLine.startX + currLine.width &&
-//       y > currLine.startY &&
-//       y < currLine.startY + currLine.size
-//     );
-//   });
-// }
+function onSetColor(val) {
+  setColor(val);
+  drawImg(gCurrImgIdx);
+  renderLines();
+}
