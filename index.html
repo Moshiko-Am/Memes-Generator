@@ -20,9 +20,11 @@
                     <option value="he">עברית</option>
                 </select>
                 <a data-trans="gallery" href="#" onclick="showHome()">Gallery</a>
+                <a href="#" onclick="onLoadMemes()">Memes</a>
             </div>
             <img class="img btn-menu" src="img/ICONS/menu.png" onclick="showMenu()">
         </header>
+        <div class="memes-container hide"></div>
         <div class="gallery-filter">
             <input data-trans="search" class="gallery-input" type="text" name="gallery-filter" id="gallery-filter"
                 placeholder="Search" oninput="onSetFilter(this.value)">
@@ -42,45 +44,57 @@
                 <div data-trans="dog" class="word-filter" onclick="onSetFilter('dog'), biggerSize(this)">dog</div>
             </div>
         </div>
-        <section class="gallery-container">
-        </section>
+        <div class="gallery-wrapper">
+            <section class="gallery-container">
+            </section>
+        </div>
         <main class="main-content hide">
             <div class="canvas-container">
-                <canvas class="my-canvas" width="400" height="400" onclick="onGetText(event)"></canvas>
+                <canvas class="my-canvas" onclick="onClickedText(event)">
+                </canvas>
             </div>
             <div class="properties-container">
                 <div class="input-container">
                     <div class="input-text">
                         <input class="txt-input" data-trans="meme" type="text" name="meme-text" id="meme-text"
-                            placeholder="Your Text Here">
+                            placeholder="Your Text Here" onkeyup="onUpdateInput(this.value)">
                     </div>
                     <div class="btns-text-modify">
-                        <button class="btn btn-switch" onclick="onSwitchLine()"><img class="img"
-                                src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-                        <button onclick="onSetNewInput()" class="btn btn-add"><img class="img"
-                                src="img/ICONS/add.png"></button>
-                        <button class="btn btn-remove" onclick="onRemoveTxt()"><img src="img/ICONS/trash.png"
-                                class="img"></button>
+                        <button class="btn btn-switch" onclick="onSwitchLine()">
+                            <img class="img" src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png">
+                        </button>
+                        <button onclick="onSetNewInput()" class="btn btn-add">
+                            <img class="img" src="img/ICONS/add.png">
+                        </button>
+                        <button class="btn btn-remove" onclick="onRemoveTxt()">
+                            <img src="img/ICONS/trash.png" class="img">
+                        </button>
                     </div>
                 </div>
                 <div class="text-properties">
                     <div class="btns-text-align">
-                        <button class="btn btn-bigger" onclick="onTextSize(4)"><img class="img img-decrease"
-                                src="img/ICONS/increase font - icon.png"></button>
-                        <button class="btn btn-smaller" onclick="onTextSize(-4)"><img class="img"
-                                src="img/ICONS/decrease font - icon.png"></button>
-                        <button class="btn btn-align-left" onclick="onTextAlign('right')"><img class="img"
-                                src="img/ICONS/align-to-left.png"></button>
-                        <button class="btn btn-align-center" onclick="onTextAlign('center')"><img class="img"
-                                src="img/ICONS/center-text-alignment.png"></button>
-                        <button class="btn btn-align-right" onclick="onTextAlign('left')"><img class="img"
-                                src="img/ICONS/align-to-right.png"></button>
+                        <button class="btn btn-bigger" onclick="onTextSize(4)">
+                            <img class="img img-decrease" src="img/ICONS/increase font - icon.png">
+                        </button>
+                        <button class="btn btn-smaller" onclick="onTextSize(-4)">
+                            <img class="img" src="img/ICONS/decrease font - icon.png">
+                        </button>
+                        <button class="btn btn-align-left" onclick="onTextAlign('right')">
+                            <img class="img" src="img/ICONS/align-to-left.png">
+                        </button>
+                        <button class="btn btn-align-center" onclick="onTextAlign('center')">
+                            <img class="img" src="img/ICONS/center-text-alignment.png">
+                        </button>
+                        <button class="btn btn-align-right" onclick="onTextAlign('left')">
+                            <img class="img" src="img/ICONS/align-to-right.png">
+                        </button>
                     </div>
                     <div class="btns-text-color">
                         <button class="btn btn-color">
                             <img src="img/ICONS/paint-board-and-brush.png" class="img">
                             <input type="color" class="color-input" oninput="onSetColor(this.value)">
                         </button>
+                        <button class="btn" onclick="onSaveMemes()"><img src="img/ICONS/save.png" class="img"></button>
                         <select name="txt-font" onchange="onFontChange(this.value)">Impact
                             <option class="font-impact" value="Impact" style="font-family: Impact">Impact</option>
                             <option class="font-patrick" value="Patrick" style="font-family: Patrick;">Patrick</option>
@@ -88,12 +102,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="text-move">
-                    <button class="btn btn-up" onclick="onTextMove(-10)">A ⬆</button>
-                    <button class="btn btn-down" onclick="onTextMove(10)">A ⬇</button>
-                    <button class="btn btn-right" onclick="onTextSide(-10)">A ⬅</button>
-                    <button class="btn btn-right" onclick="onTextSide(10)">A ➡</button>
-                </div>
+
                 <div class="share-container">
                     <form onsubmit="uploadImg(this, event)" class="form-share">
                         <input name="img" id="imgData" type="hidden" />
@@ -117,6 +126,7 @@
 
 
 
+    <script src="js/local-storage.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/i18n-service.js"></script>
     <script src="js/meme-controller.js"></script>

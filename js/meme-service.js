@@ -2,6 +2,7 @@
 var gId = 0;
 var gSelectedLine = 0;
 var gFilterBy = '';
+var gSavedMemes;
 
 var gCurrTxt = '';
 
@@ -45,7 +46,17 @@ var gImgs = [
 var gMeme = {
   selectedImgId: 0,
   selectedLineIdx: 0,
-  lines: [],
+  lines: [
+    {
+      txt: '',
+      size: 40,
+      font: 'Impact',
+      align: 'center',
+      color: 'white',
+      lineHeight: 50,
+      lineWidth: 250,
+    },
+  ],
 };
 
 function setTextSize(diff) {
@@ -60,9 +71,13 @@ function textSide(diff) {
   gMeme.lines[gSelectedLine].lineWidth += diff;
 }
 
-function setInput(txt) {
+function updateInput(val) {
+  gMeme.lines[gSelectedLine].txt = val;
+}
+
+function setInput() {
   var newLine = {
-    txt,
+    txt: 'Enter Text Here',
     size: 40,
     font: 'Impact',
     align: 'center',
@@ -73,12 +88,19 @@ function setInput(txt) {
   gMeme.lines.push(newLine);
   gMeme.selectedLineIdx = gMeme.lines.length - 1;
   gSelectedLine = gMeme.selectedLineIdx;
-  switch (gLineHeight) {
-    case 50:
-      gLineHeight = gCanvas.height - 20;
+
+  switch (gMeme.selectedLineIdx) {
+    case 0:
+      gLineHeight = 40;
+      gMeme.lines[gMeme.selectedLineIdx].lineHeight = 40;
       break;
-    case gCanvas.height - 20:
+    case 1:
+      gLineHeight = gCanvas.height - 20;
+      gMeme.lines[gMeme.selectedLineIdx].lineHeight = gCanvas.height - 20;
+      break;
+    default:
       gLineHeight = gCanvas.height / 2;
+      gMeme.lines[gMeme.selectedLineIdx].lineHeight = gCanvas.height / 2;
       break;
   }
 }
@@ -111,4 +133,29 @@ function getImagesForDisplay() {
 
 function setColor(val) {
   gMeme.lines[gSelectedLine].color = val;
+}
+
+function moveLine(dx, dy) {
+  gMeme.lines[gDragLine].lineWidth += dx;
+  gMeme.lines[gDragLine].lineHeight += dy;
+}
+
+function saveMeme() {
+  var currMemeUrl = gCanvas.toDataURL('image/jpeg');
+  var currMeme = {
+    url: currMemeUrl,
+    data: gMeme,
+  };
+
+  gSavedMemes.push(currMeme);
+  saveToStorage(MEMES_KEY, gSavedMemes);
+}
+
+function initMemes() {
+  var memes = loadFromStorage(MEMES_KEY);
+  if (memes) {
+    gSavedMemes = memes;
+  } else {
+    gSavedMemes = [];
+  }
 }

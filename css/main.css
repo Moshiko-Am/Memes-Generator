@@ -57,7 +57,7 @@ a {
   align-items: center;
   width: 450px;
   height: 450px;
-  flex-basis: 50%;
+  /* flex-basis: 50%; */
 }
 
 .my-canvas {
@@ -98,6 +98,8 @@ a {
 .main-content {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   padding-top: 1rem;
   background-color: #e3e3e3;
   max-width: 1200px;
@@ -108,7 +110,6 @@ a {
 
 .properties-container {
   width: 50%;
-  /* padding-left: 4rem; */
 }
 
 .main-footer {
@@ -128,6 +129,20 @@ a {
 .gallery-img {
   cursor: pointer;
   margin: 0.2rem;
+}
+
+.gallery-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.memes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .gallery-container {
@@ -189,7 +204,7 @@ a {
   justify-content: center;
   align-items: center;
   outline: none;
-  padding: 1rem;
+  padding: 3rem;
   background-color: #fff;
 }
 
@@ -500,8 +515,8 @@ select[name='txt-font'] {
   }
 
   .canvas-container {
-    max-width: 300px;
-    max-height: 300px;
+    width: 300px;
+    height: 300px;
   }
 
   .properties-container {
@@ -550,7 +565,8 @@ select[name='txt-font'] {
 
   .links-container-show {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     transform: translateX(0);
   }
 
